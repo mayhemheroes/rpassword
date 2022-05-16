@@ -6,4 +6,4 @@ duration: 300
 tests: null
 
 cmds:
-    - cmd: ./fuzzing
+    - cmd: ./fuzzing @@
