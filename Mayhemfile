@@ -1,0 +1,9 @@
+project: rpassword
+target: rpassword
+
+image: ghcr.io/ebell495/rpassword:latest
+duration: 300
+tests: null
+
+cmds:
+    - cmd: ./fuzzing
