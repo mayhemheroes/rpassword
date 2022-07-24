@@ -1,6 +1,4 @@
 project: rpassword
-target: fuzzing
-tests: null
-
+target: fuzz_password_input
 cmds:
-    - cmd: ./fuzzing @@
+    - cmd: ./fuzz_password_input @@
