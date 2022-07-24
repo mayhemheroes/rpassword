@@ -5,5 +5,10 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[[bin]]
+name = "fuzz_password_input"
+path = "src/fuzz_password_input.rs"
+
+
 [dependencies.rpassword]
 path = ".."
