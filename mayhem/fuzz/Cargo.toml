@@ -1,0 +1,35 @@
+# Standalone workspace so cargo doesn't try to fold this additive crate into rpassword's
+# package dir (the upstream root has no [workspace]; an implicit one would reject a non-member).
+[workspace]
+members = ["."]
+
+[package]
+name = "rpassword-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2021"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+
+[dependencies.rpassword]
+# Additive integration crate: depend on the upstream library by path (repo root is
+# two levels up from mayhem/fuzz/). Leaves upstream Cargo.toml / sources untouched.
+path = "../.."
+
+# Ports the old fork harness (fuzzing/src/fuzz_password_input.rs), which fed a file's
+# bytes into rpassword's password reader. We drive the modern, non-deprecated
+# read_password_with_config(input_reader) so the full input state machine in lib.rs
+# is exercised (more edges than the one-line deprecated read_password_from_bufread).
+[[bin]]
+name = "fuzz_password_input"
+path = "fuzz_targets/fuzz_password_input.rs"
+test = false
+doc = false
+bench = false
+
+[profile.release]
+debug = 1

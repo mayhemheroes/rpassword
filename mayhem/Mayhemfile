@@ -1,0 +1,11 @@
+project: rpassword
+# Parity with the fork's root Mayhemfile (old target name `fuzz_password_input`). Same single
+# harness as mayhem/Mayhemfile_fuzz_password_input (the underscore vs hyphen slug is the only
+# difference); kept so port-check sees no dropped target. Now the instrumented libfuzzer binary.
+target: fuzz_password_input
+
+cmds:
+  # libFuzzer target: Mayhem drives inputs through the libFuzzer entrypoint, so NO '@@'
+  # (Mayhem rejects '@@' on a libfuzzer:true target).
+  - cmd: /mayhem/fuzz_password_input
+    libfuzzer: true
