@@ -104,5 +104,6 @@ jobs:
       - name: Start analysis for ${{ matrix.mayhemfile }}
         uses: ForAllSecure/mcode-action@45030511e1d555a8b4d80706df36c9c8d0a34d51
         with:
+          duration: ${{ inputs.duration }}
           mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
-          args: --image ${{ needs.build.outputs.image }} --file ${{ matrix.mayhemfile }} --duration ${{ inputs.duration || '1200' }}
+          args: --image ${{ needs.build.outputs.image }} --file ${{ matrix.mayhemfile }} --duration 240
