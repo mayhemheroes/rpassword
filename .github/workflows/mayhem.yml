@@ -102,7 +102,7 @@ jobs:
         with:
           ref: ${{ needs.build.outputs.ref }}
       - name: Start analysis for ${{ matrix.mayhemfile }}
-        uses: ForAllSecure/mcode-action@45030511e1d555a8b4d80706df36c9c8d0a34d51
+        uses: ForAllSecure/mcode-action@6da9e1a1da8ac2dd11ea96f7766f8992f62df529
         with:
           duration: ${{ inputs.duration }}
           mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
